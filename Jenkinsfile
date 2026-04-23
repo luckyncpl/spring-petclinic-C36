@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    tools {
+        maven 'maven'
+    }
+    stages{
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/luckyncpl/spring-petclinic-C36.git'
+            }
+        }
+        stage('Maven Validate') {
+            steps {
+                sh 'mvn validate'
+            }
+        }
+        stage('Maven Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        stage('Maven Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Maven Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
