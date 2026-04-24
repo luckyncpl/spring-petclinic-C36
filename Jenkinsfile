@@ -11,15 +11,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/luckyncpl/spring-petclinic-C36.git'
             }
         }
-
-        stage('Check Java Version') {
-            steps {
-                sh 'java -version'
-                sh 'javac -version'
-                sh 'mvn -version'
-            }
-        }
-
         stage('Maven Validate') {
             steps {
                 sh 'mvn validate'
